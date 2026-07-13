@@ -302,6 +302,18 @@ p { margin: 0 0 1.1rem; }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 960px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+/* Team grid: with 5 providers, center the last row under the top three */
+@media (min-width: 961px) {
+  #team .grid-3 { grid-template-columns: repeat(6, 1fr); }
+  #team .grid-3 > .provider { grid-column: span 2; }
+  #team .grid-3 > .provider:nth-child(4) { grid-column: 2 / span 2; }
+  #team .grid-3 > .provider:nth-child(5) { grid-column: 4 / span 2; }
+}
+@media (min-width: 641px) and (max-width: 960px) {
+  #team .grid-3 { grid-template-columns: repeat(4, 1fr); }
+  #team .grid-3 > .provider { grid-column: span 2; }
+  #team .grid-3 > .provider:nth-child(5) { grid-column: 2 / span 2; }
+}
 
 .card {
   background: var(--bg-alt); border-radius: var(--radius-lg); padding: 2rem;
@@ -554,6 +566,13 @@ body.modal-open { overflow: hidden; }
 .map-legend i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(23,40,30,.2); flex: none; }
 .map-legend i.clinic { background: #d92d20; }
 .map-legend i.estab { background: #2563c9; }
+
+/* CEO video embed (responsive 16:9) */
+.video-embed { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); background: #17281e; }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-embed__ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.85rem; color: rgba(255, 255, 255, 0.92); text-align: center; padding: 1rem; }
+.video-embed__ph svg { width: 62px; height: 62px; opacity: 0.9; }
+.video-embed__ph p { margin: 0; font-weight: 600; font-size: 1rem; }
 @keyframes pin-pulse { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(2.3); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .scdot::after { animation: none; } }
 
