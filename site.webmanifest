@@ -1,0 +1,13 @@
+{
+  "name": "iTrust Cares",
+  "short_name": "iTrust Cares",
+  "description": "Senior mental health & cognitive support services for senior living communities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4ebe1",
+  "theme_color": "#17281e",
+  "icons": [
+    { "src": "assets/images/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/images/logo-mark.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
