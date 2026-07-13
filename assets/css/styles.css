@@ -543,6 +543,17 @@ body.modal-open { overflow: hidden; }
 .scdot--low { background: var(--green-700); }
 .scdot::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; border: 2px solid var(--terracotta); opacity: 0.55; animation: pin-pulse 2.4s ease-out infinite; }
 .scdot--low::after { border-color: var(--green-700); }
+/* clinics (red, pulsing) + establishments (blue, static) */
+.scdot--clinic { background: #d92d20; }
+.scdot--clinic::after { border-color: #d92d20; }
+.scdot--estab { width: 14px; height: 14px; border-width: 2px; background: #2563c9; }
+.scdot--estab::after { display: none; }
+/* map legend */
+.map-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 0.6rem 0.25rem 0; font-size: 0.82rem; color: var(--ink-soft); }
+.map-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.map-legend i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(23,40,30,.2); flex: none; }
+.map-legend i.clinic { background: #d92d20; }
+.map-legend i.estab { background: #2563c9; }
 @keyframes pin-pulse { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(2.3); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .scdot::after { animation: none; } }
 

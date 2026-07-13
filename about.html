@@ -19,7 +19,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="assets/css/styles.css?v=11">
+<link rel="stylesheet" href="assets/css/styles.css?v=12">
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"Home","item":"https://itrustcares.com/"},
@@ -123,15 +123,6 @@
           </div>
         </article>
 
-        <article class="provider">
-          <div class="provider__photo"><img src="assets/images/team/lily.jpg" alt="Lily Rigmaiden, provider at iTrust Cares" width="800" height="1000" loading="lazy"></div>
-          <div class="provider__body">
-            <h3 class="provider__name">Lily Rigmaiden</h3>
-            <div class="provider__creds">PA</div>
-            <p class="provider__bio">Originally from Denver, Colorado, Lily grew up hiking, camping, and spending time outdoors. She earned her Bachelor's in Criminal Justice and Psychology from the University of Northern Colorado and her Master of Physician Assistant Studies from Drexel University, and is certified through the NEI Master Psychopharmacology Program. She has a special passion for the geriatric population and is committed to safe, effective, collaborative care alongside families and support teams. Lily moved to the Upstate with her husband and son in June 2024, and enjoys time with her family, dog, and cat, plus reading, kayaking, camping, and traveling.</p>
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
@@ -154,6 +145,10 @@
             <noscript><img src="assets/images/sc-map.png" alt="Map of South Carolina showing iTrust Cares service areas around Greenville in the Upstate and Charleston in the Lowcountry" width="1942" height="1607" style="width:100%;height:auto;border-radius:18px;"></noscript>
           </div>
           <p class="map-attrib">Map data &copy; OpenStreetMap contributors</p>
+          <div class="map-legend">
+            <span><i class="clinic" aria-hidden="true"></i>Our clinics</span>
+            <span><i class="estab" aria-hidden="true"></i>Nearby landmarks</span>
+          </div>
         </div>
         <div class="area-list">
           <article class="area-card area-card--upstate">
@@ -242,8 +237,13 @@
     attribution: "&copy; OpenStreetMap contributors"
   }).addTo(map);
 
-  function dot(cls) {
-    return L.divIcon({ className: "", html: '<span class="scdot ' + cls + '"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -12] });
+  // Teardrop map-pin icon (Google-style): colored drop + white center dot
+  function pin(color, w) {
+    var h = Math.round(w * 1.5);
+    var html = '<svg width="' + w + '" height="' + h + '" viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 2px 3px rgba(23,40,30,.45))">' +
+      '<path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="' + color + '" stroke="#ffffff" stroke-width="1.6"/>' +
+      '<circle cx="12" cy="12" r="4.6" fill="#ffffff"/></svg>';
+    return L.divIcon({ className: "scpin", html: html, iconSize: [w, h], iconAnchor: [Math.round(w / 2), h], popupAnchor: [0, -h + 6] });
   }
   function pop(region, areas, phone, tel, email, hours, query) {
     return '<div class="scpop"><h4>' + region + '</h4>' +
@@ -255,14 +255,29 @@
   }
   var HOURS = "Mon to Fri, 9:00am to 5:00pm";
   var EMAIL = "clinical@itrustcares.com";
+  var CLINIC = "#d92d20", LAND = "#2563c9";
 
-  L.marker([34.8526, -82.3940], { icon: dot("scdot--upstate"), title: "Greenville" }).addTo(map)
-    .bindTooltip("Greenville", { permanent: true, direction: "top", className: "sclabel", offset: [0, -9] })
+  // Red teardrop pins = our clinics
+  L.marker([34.8526, -82.3940], { icon: pin(CLINIC, 32), title: "Greenville", zIndexOffset: 1000 }).addTo(map)
+    .bindTooltip("Greenville", { permanent: true, direction: "top", className: "sclabel", offset: [0, -46] })
     .bindPopup(pop("Upstate South Carolina", "Greenville, Spartanburg, Anderson, Easley, Greer", "864-970-2273", "+18649702273", EMAIL, HOURS, "Greenville%2C+SC"), POPT);
 
-  L.marker([32.7765, -79.9311], { icon: dot("scdot--low"), title: "Charleston" }).addTo(map)
-    .bindTooltip("Charleston", { permanent: true, direction: "top", className: "sclabel", offset: [0, -9] })
+  L.marker([32.7765, -79.9311], { icon: pin(CLINIC, 32), title: "Charleston", zIndexOffset: 1000 }).addTo(map)
+    .bindTooltip("Charleston", { permanent: true, direction: "top", className: "sclabel", offset: [0, -46] })
     .bindPopup(pop("Lowcountry South Carolina", "Charleston, Mount Pleasant, Summerville, North Charleston, Goose Creek", "843-285-6757", "+18432856757", EMAIL, HOURS, "Charleston%2C+SC"), POPT);
+
+  // Blue teardrop pins = nearby landmarks (sample scatter - replace with real locations)
+  var landmarks = [
+    [34.858, -82.322], [34.792, -82.302], [34.803, -82.331], [34.829, -82.601], [34.939, -82.227],
+    [34.737, -82.254], [34.505, -82.651], [34.9496, -81.9320], [35.0518, -81.9857], [34.9243, -82.2760],
+    [34.7790, -82.3110], [34.6857, -82.2010], [34.6834, -82.8374], [34.8760, -82.3900],
+    [32.833, -79.860], [32.843, -79.835], [32.826, -79.847], [32.719, -79.945], [32.900, -80.030],
+    [33.019, -80.176], [32.9860, -80.0326], [32.7920, -79.9870], [32.8546, -79.9970]
+  ];
+  landmarks.forEach(function (c) {
+    L.marker(c, { icon: pin(LAND, 26), title: "Nearby Landmark" }).addTo(map)
+      .bindPopup('<div class="scpop"><h4>Nearby Landmark</h4></div>', POPT);
+  });
 
   setTimeout(function () { map.invalidateSize(); }, 300);
   window.addEventListener("load", function () { map.invalidateSize(); });
