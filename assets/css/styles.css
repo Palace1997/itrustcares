@@ -46,6 +46,7 @@
   /* Type */
   --font-display: "GT Super Display", Georgia, "Times New Roman", serif;
   --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --h-scale: 1;   /* global size multiplier for big display headings (h1/h2) */
 
   /* Rhythm */
   --container: 1200px;
@@ -89,8 +90,8 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
   margin: 0 0 0.5em;
 }
-h1 { font-size: clamp(2.6rem, 5.2vw, 4.4rem); }
-h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+h1 { font-size: calc(clamp(2.6rem, 5.2vw, 4.4rem) * var(--h-scale, 1)); }
+h2 { font-size: calc(clamp(2rem, 3.6vw, 3rem) * var(--h-scale, 1)); }
 h3 { font-size: clamp(1.4rem, 2vw, 1.85rem); }
 h4 { font-size: clamp(1.15rem, 1.4vw, 1.35rem); }
 p { margin: 0 0 1.1rem; }
