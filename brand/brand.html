@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>iTrust Cares Brand Guidelines</title>
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{
+    --green-900:#17281e; --green-700:#223a2a; --sage:#94a276; --light-sage:#dae3c3;
+    --terracotta:#c46530; --terracotta-lt:#e08b4f; --sand:#e4dac4; --cream:#f4ebe1; --white:#fff;
+    --ink:#1d2b22; --ink-soft:#4a5a4f;
+    --serif:"GT Super Display",Georgia,serif; --sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#000}
+  .slide{position:relative;width:11in;height:8.5in;overflow:hidden;break-after:page;
+    display:flex;flex-direction:column;justify-content:center;padding:.9in 1in;font-family:var(--sans)}
+  .slide:last-child{break-after:auto}
+  .dark{background:var(--green-900);color:#fff}
+  .green{background:var(--green-700);color:#fff}
+  .cream{background:var(--cream);color:var(--ink)}
+  .eyebrow{font-weight:700;font-size:12pt;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-lt);margin-bottom:.3in}
+  .cream .eyebrow{color:var(--terracotta)}
+  h1{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em}
+  h2{font-family:var(--serif);font-weight:600;font-size:32pt;line-height:1.04;margin-bottom:.3in;text-transform:capitalize}
+  .dark h2,.green h2{color:#fff}.cream h2{color:var(--green-900)}
+  p{font-size:12.5pt;line-height:1.6;max-width:8in}
+  .dark p,.green p{color:rgba(255,255,255,.86)}.cream p{color:var(--ink-soft)}
+  .foot{position:absolute;left:1in;right:1in;bottom:.5in;display:flex;justify-content:space-between;font-size:9pt;letter-spacing:.05em;font-weight:600;opacity:.85}
+  .dark .foot,.green .foot,.cream .foot{color:var(--sage)}
+  /* cover */
+  .cover{background:var(--green-900);color:#fff;position:relative}
+  .cover .bg{position:absolute;inset:0;background:url('../assets/images/photos/home-hero.jpg') center/cover;opacity:.28}
+  .cover .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,40,30,.92),rgba(23,40,30,.55))}
+  .cover .inner{position:relative}
+  .cover img.logo{height:.58in;margin-bottom:.55in;filter:brightness(0) invert(1)}
+  .cover h1{font-size:60pt;color:#fff}.cover h1 span{color:var(--terracotta-lt)}
+  .cover .rule{width:1.1in;height:5px;background:var(--terracotta);border-radius:3px;margin:.45in 0}
+  .cover p{font-size:15pt;color:rgba(255,255,255,.9);max-width:6.6in}
+  /* toc (15 items) */
+  .toc-list{margin-top:.05in}
+  .toc-item{display:flex;align-items:baseline;gap:.35in;padding:.056in 0;border-bottom:1px solid rgba(23,40,30,.13)}
+  .toc-num{font-family:var(--serif);font-weight:600;font-size:12pt;color:var(--terracotta);width:.45in;flex:none}
+  .toc-title{font-family:var(--serif);font-weight:600;font-size:13.5pt;color:var(--green-900);flex:1}
+  .toc-desc{font-size:9pt;color:var(--ink-soft);text-align:right;max-width:3.4in}
+  /* voice */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:.36in .6in;margin-top:.1in}
+  .vcard{border:1px solid rgba(255,255,255,.16);border-left:5px solid var(--terracotta);border-radius:14px;padding:.28in .32in;background:rgba(255,255,255,.04)}
+  .vcard h3{font-family:var(--serif);font-weight:600;font-size:16pt;color:#fff;margin-bottom:.06in}
+  .vcard p{font-size:11pt;color:rgba(255,255,255,.82)}
+  .rules{margin-top:.3in;font-size:10.5pt;color:rgba(255,255,255,.72)}.rules b{color:#fff}
+  /* tone in action */
+  .tone-head{display:grid;grid-template-columns:1fr 1fr;gap:.5in;margin:.1in 0 .05in}
+  .tone-head span{font-weight:700;font-size:10pt;letter-spacing:.07em;text-transform:uppercase}
+  .tone-head .say{color:var(--sage)}.tone-head .not{color:var(--terracotta)}
+  .tone-row{display:grid;grid-template-columns:1fr 1fr;gap:.5in;padding:.16in 0;border-top:1px solid rgba(23,40,30,.12)}
+  .tone-row .say{color:var(--green-900);font-weight:600;font-size:13pt;font-family:var(--serif)}
+  .tone-row .not{color:var(--ink-soft);font-size:12pt}
+  /* messaging */
+  .tagline{font-family:var(--serif);font-weight:600;font-size:36pt;color:#fff;line-height:1.05;margin-bottom:.18in}
+  .tagline span{color:var(--terracotta-lt)}
+  .mission{font-size:13pt;color:rgba(255,255,255,.86);max-width:8.2in;margin-bottom:.34in}
+  .msg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.28in}
+  .msg-card{border:1px solid rgba(255,255,255,.16);border-top:4px solid var(--terracotta);border-radius:14px;padding:.26in .28in;background:rgba(255,255,255,.04)}
+  .msg-card h3{font-family:var(--serif);font-weight:600;font-size:14pt;color:#fff;margin-bottom:.05in}
+  .msg-card p{font-size:10pt;color:rgba(255,255,255,.8)}
+  /* color */
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:.24in;margin-top:.1in}
+  .sw .chip{height:1.5in;border-radius:14px;border:1px solid rgba(23,40,30,.1)}
+  .sw .nm{font-weight:700;font-size:11pt;margin-top:.12in;color:var(--green-900)}
+  .sw .hex{font-size:9.5pt;color:var(--ink-soft)}
+  /* pairings */
+  .pair-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.28in;margin-top:.1in}
+  .pair{border-radius:16px;padding:.4in;min-height:1.7in;display:flex;flex-direction:column;justify-content:center}
+  .pair .big{font-family:var(--serif);font-weight:600;font-size:24pt;line-height:1}
+  .pair .sm{font-size:11pt;margin-top:.1in}
+  .pair .tag{font-size:8.5pt;margin-top:.2in;letter-spacing:.05em;text-transform:uppercase;opacity:.85}
+  /* type */
+  .type-row{display:grid;grid-template-columns:2.4in 1fr;gap:.5in;align-items:center;padding:.3in 0;border-top:1px solid rgba(255,255,255,.16)}
+  .type-aa{font-family:var(--serif);font-weight:700;font-size:80pt;color:var(--terracotta-lt);line-height:.88}
+  .type-aa.sans{font-family:var(--sans);font-weight:800;color:var(--sage)}
+  .type-name{font-family:var(--serif);font-weight:600;font-size:21pt;color:#fff}
+  .type-meta{font-size:10.5pt;color:rgba(255,255,255,.72);margin-top:.05in}
+  .type-sample{font-family:var(--serif);font-size:15pt;color:rgba(255,255,255,.92);margin-top:.1in}
+  .type-sample.sans{font-family:var(--sans)}
+  /* logo */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.34in;margin-top:.1in}
+  .logo-box{border-radius:14px;min-height:1.7in;display:flex;align-items:center;justify-content:center;padding:.5in}
+  .logo-box.light{background:#fff}.logo-box.dark2{background:#0f1c14;border:1px solid rgba(255,255,255,.16)}
+  .logo-box img{height:.5in}
+  .cap{font-size:9.5pt;color:rgba(255,255,255,.75);text-align:center;margin-top:.12in}
+  .dodont{display:grid;grid-template-columns:1fr 1fr;gap:.4in;margin-top:.3in;font-size:10.5pt}
+  .dodont h4{font-weight:700;font-size:10pt;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.1in}
+  .do h4{color:var(--sage)}.dont h4{color:var(--terracotta-lt)}
+  .dodont li{list-style:none;color:rgba(255,255,255,.82);line-height:1.5;padding-left:.22in;position:relative;margin-bottom:3px}
+  .do li::before{content:"\2713";position:absolute;left:0;color:var(--sage);font-weight:700}
+  .dont li::before{content:"\00d7";position:absolute;left:0;color:var(--terracotta-lt);font-weight:700}
+  /* iconography */
+  .icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.28in;margin:.1in 0 .34in}
+  .icon-tile{border:1px solid rgba(255,255,255,.16);border-radius:14px;min-height:1.35in;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04)}
+  .icon-tile svg{width:.6in;height:.6in;color:var(--sage)}
+  .icon-note{font-size:11pt;color:rgba(255,255,255,.82);max-width:8.2in}.icon-note b{color:#fff}
+  /* buttons & ui */
+  .btn-demo{display:flex;flex-wrap:wrap;gap:.22in;align-items:center;margin:.12in 0 .1in}
+  .bd{font-family:var(--sans);font-weight:700;font-size:12.5pt;border-radius:999px;padding:.15in .36in;display:inline-block}
+  .bd-primary{background:var(--terracotta);color:#fff}
+  .bd-outline{background:transparent;border:2px solid rgba(255,255,255,.55);color:#fff}
+  .bd-light{background:var(--cream);color:var(--green-900)}
+  .ui-lab{font-weight:700;font-size:9.5pt;letter-spacing:.07em;text-transform:uppercase;color:var(--sage);margin:.3in 0 .05in}
+  .pill-demo{display:flex;flex-wrap:wrap;gap:.13in;margin-top:.04in}
+  .pill{background:var(--light-sage);color:var(--green-700);border-radius:999px;padding:.09in .24in;font-size:10.5pt;font-weight:600}
+  .ui-note{font-size:10.5pt;color:rgba(255,255,255,.82);margin-top:.28in;max-width:8.2in}
+  .ui-note b{color:#fff}
+  /* spacing & layout */
+  .lay-grid{display:grid;grid-template-columns:1fr 1fr;gap:.32in;margin-top:.1in}
+  .lay-card{background:#fff;border:1px solid rgba(23,40,30,.1);border-left:5px solid var(--sage);border-radius:14px;padding:.28in .32in}
+  .lay-card h3{font-family:var(--serif);font-weight:600;font-size:15pt;color:var(--green-900);margin-bottom:.05in}
+  .lay-card p{font-size:10.5pt;color:var(--ink-soft)}
+  .scale{display:flex;align-items:flex-end;gap:.14in;margin-top:.34in}
+  .scale span{display:block;background:var(--sage);border-radius:4px;width:.55in;opacity:.85}
+  .scale small{display:block;text-align:center;font-size:8pt;color:var(--ink-soft);margin-top:.06in}
+  /* imagery */
+  .img-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.22in;height:2.6in;margin:.15in 0 .3in}
+  .img-strip .ph{border-radius:12px;background-size:cover;background-position:center}
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:.34in;font-size:11pt}
+  .dark .principles p{color:rgba(255,255,255,.82)}.dark .principles b{color:#fff}
+  /* brand in use */
+  .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.3in;margin-top:.1in}
+  .use-card{border-radius:14px;overflow:hidden;border:1px solid rgba(23,40,30,.1);background:#fff}
+  .use-top{height:2.2in;position:relative;display:flex;flex-direction:column;justify-content:center;padding:.28in}
+  .use-cap{padding:.14in .2in;font-size:9.5pt;color:var(--ink-soft);font-weight:600}
+  .card-mock{background:var(--green-700)}
+  .card-mock img{height:.34in;filter:brightness(0) invert(1);margin-bottom:auto}
+  .card-mock .nm{font-family:var(--serif);font-size:14pt;color:#fff}
+  .card-mock .ti{font-size:9pt;color:var(--light-sage)}
+  .card-mock .ct{font-size:8.5pt;color:rgba(255,255,255,.7);margin-top:.14in}
+  .social-mock{background:url('../assets/images/photos/onsite-care.jpg') center/cover}
+  .social-mock .sc{position:absolute;inset:0;background:linear-gradient(0deg,rgba(23,40,30,.85),rgba(23,40,30,.25))}
+  .social-mock .st{position:relative;margin-top:auto;font-family:var(--serif);font-size:15pt;color:#fff;line-height:1.1}
+  .sig-mock{background:#fff}
+  .sig-mock img{height:.32in;margin-bottom:.12in}
+  .sig-mock .nm{font-family:var(--serif);font-size:13pt;color:var(--green-900)}
+  .sig-mock .ln{font-size:8.5pt;color:var(--ink-soft)}
+  .sig-mock .ln.tc{color:var(--terracotta);font-weight:600}
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4in .6in;margin-top:.1in}
+  .contact-block h3{font-family:var(--serif);font-weight:600;font-size:16pt;color:#fff;margin-bottom:.1in}
+  .contact-block .line{font-size:12.5pt;color:rgba(255,255,255,.9);margin-bottom:.05in}
+  .contact-block .k{color:var(--sage);font-weight:700;font-size:9.5pt;letter-spacing:.05em;text-transform:uppercase}
+  .contact-block .v{color:#fff}
+  .contact-block .tc{color:var(--terracotta-lt)}
+  .contact-close{margin-top:.4in;font-family:var(--serif);font-size:15pt;color:rgba(255,255,255,.92)}
+</style>
+</head>
+<body>
+
+  <!-- 01 Cover -->
+  <section class="slide cover">
+    <div class="bg"></div><div class="scrim"></div>
+    <div class="inner">
+      <img class="logo" src="../assets/images/logo-green.svg" alt="iTrust Cares">
+      <div class="eyebrow">Brand Guidelines</div>
+      <h1>Mental health care<br>for <span>senior living</span></h1>
+      <p style="margin-top:.4in">How iTrust Cares looks, sounds, and shows up, so every touchpoint feels as compassionate as the care we deliver.</p>
+    </div>
+    <div class="foot"><span>iTrust Cares</span><span>Brand Guidelines</span></div>
+  </section>
+
+  <!-- 02 Table of Contents -->
+  <section class="slide cream">
+    <h2>Contents</h2>
+    <div class="toc-list">
+      <div class="toc-item"><div class="toc-num">01</div><div class="toc-title">Cover</div><div class="toc-desc">Welcome to iTrust Cares</div></div>
+      <div class="toc-item"><div class="toc-num">02</div><div class="toc-title">Table of Contents</div><div class="toc-desc">This page</div></div>
+      <div class="toc-item"><div class="toc-num">03</div><div class="toc-title">Voice &amp; Tone</div><div class="toc-desc">Who we are and how we sound</div></div>
+      <div class="toc-item"><div class="toc-num">04</div><div class="toc-title">Tone in Action</div><div class="toc-desc">Say this, not that</div></div>
+      <div class="toc-item"><div class="toc-num">05</div><div class="toc-title">Messaging &amp; Tagline</div><div class="toc-desc">Tagline, mission, and key messages</div></div>
+      <div class="toc-item"><div class="toc-num">06</div><div class="toc-title">Color Palette</div><div class="toc-desc">Brand colors and where to use them</div></div>
+      <div class="toc-item"><div class="toc-num">07</div><div class="toc-title">Color Pairings</div><div class="toc-desc">Accessible color combinations</div></div>
+      <div class="toc-item"><div class="toc-num">08</div><div class="toc-title">Typography</div><div class="toc-desc">Our two typefaces</div></div>
+      <div class="toc-item"><div class="toc-num">09</div><div class="toc-title">Logo Usage</div><div class="toc-desc">The mark, clear space, and do's and don'ts</div></div>
+      <div class="toc-item"><div class="toc-num">10</div><div class="toc-title">Iconography</div><div class="toc-desc">Our line-icon style</div></div>
+      <div class="toc-item"><div class="toc-num">11</div><div class="toc-title">Buttons &amp; UI</div><div class="toc-desc">Interactive components</div></div>
+      <div class="toc-item"><div class="toc-num">12</div><div class="toc-title">Spacing &amp; Layout</div><div class="toc-desc">Rhythm, balance, and breathing room</div></div>
+      <div class="toc-item"><div class="toc-num">13</div><div class="toc-title">Imagery</div><div class="toc-desc">How we show care</div></div>
+      <div class="toc-item"><div class="toc-num">14</div><div class="toc-title">Brand in Use</div><div class="toc-desc">The brand applied</div></div>
+      <div class="toc-item"><div class="toc-num">15</div><div class="toc-title">Contact</div><div class="toc-desc">How to reach us</div></div>
+    </div>
+    <div class="foot"><span>Table of Contents</span><span>02</span></div>
+  </section>
+
+  <!-- 03 Voice -->
+  <section class="slide dark">
+    <div class="eyebrow">Who We Are</div>
+    <h2>Our essence and voice</h2>
+    <p>We bring compassionate, on-site mental health and cognitive care directly to senior living communities across South Carolina. Our brand always feels warm, steady, and human.</p>
+    <div class="voice-grid">
+      <div class="vcard"><h3>Compassionate, always</h3><p>We lead with warmth and empathy in every word.</p></div>
+      <div class="vcard"><h3>Clear, never clinical</h3><p>Plain, kind language. We explain, never talk down.</p></div>
+      <div class="vcard"><h3>Dignified, person-first</h3><p>Older adults are valued people, never labels.</p></div>
+      <div class="vcard"><h3>Calm and hopeful</h3><p>Quiet confidence and steadiness in hard moments.</p></div>
+    </div>
+    <div class="foot"><span>Voice &amp; Tone</span><span>03</span></div>
+  </section>
+
+  <!-- 04 Tone in Action -->
+  <section class="slide cream">
+    <div class="eyebrow">Tone in Action</div>
+    <h2>Say this, not that</h2>
+    <div class="tone-head"><span class="say">Say this</span><span class="not">Not this</span></div>
+    <div class="tone-row"><div class="say">Care that comes to them</div><div class="not">We service facilities</div></div>
+    <div class="tone-row"><div class="say">Older adults, residents</div><div class="not">The elderly, cases</div></div>
+    <div class="tone-row"><div class="say">On-site mental health support</div><div class="not">Psychiatric intervention</div></div>
+    <div class="tone-row"><div class="say">We're here to help</div><div class="not">Submit a request</div></div>
+    <div class="tone-row"><div class="say">Available in 2 to 3 weeks</div><div class="not">Available in 2-3 weeks</div></div>
+    <div class="foot"><span>Tone in Action</span><span>04</span></div>
+  </section>
+
+  <!-- 05 Messaging -->
+  <section class="slide green">
+    <div class="eyebrow">Messaging</div>
+    <div class="tagline">Mental health care for <span>senior living.</span></div>
+    <p class="mission">iTrust Cares provides on-site psychiatric and cognitive support for older adults in senior living communities across South Carolina's Upstate and Lowcountry. Our nurse practitioners and physician assistants deliver unrushed, person-first care, right where residents live.</p>
+    <div class="msg-cards">
+      <div class="msg-card"><h3>Care that comes to them</h3><p>On-site support, no travel, no disruption to daily life.</p></div>
+      <div class="msg-card"><h3>Unrushed and personal</h3><p>Time to listen, understand, and build real trust.</p></div>
+      <div class="msg-card"><h3>Dignity in every visit</h3><p>Every resident is treated as a whole, valued person.</p></div>
+    </div>
+    <div class="foot"><span>Messaging &amp; Tagline</span><span>05</span></div>
+  </section>
+
+  <!-- 06 Color -->
+  <section class="slide cream">
+    <div class="eyebrow">Color</div>
+    <h2>The palette</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#223a2a"></div><div class="nm">Deep Green</div><div class="hex">#223A2A</div></div>
+      <div class="sw"><div class="chip" style="background:#c46530"></div><div class="nm">Terracotta</div><div class="hex">#C46530</div></div>
+      <div class="sw"><div class="chip" style="background:#94a276"></div><div class="nm">Sage</div><div class="hex">#94A276</div></div>
+      <div class="sw"><div class="chip" style="background:#dae3c3"></div><div class="nm">Light Sage</div><div class="hex">#DAE3C3</div></div>
+      <div class="sw"><div class="chip" style="background:#17281e"></div><div class="nm">Forest</div><div class="hex">#17281E</div></div>
+      <div class="sw"><div class="chip" style="background:#e4dac4"></div><div class="nm">Sand</div><div class="hex">#E4DAC4</div></div>
+      <div class="sw"><div class="chip" style="background:#f4ebe1"></div><div class="nm">Cream</div><div class="hex">#F4EBE1</div></div>
+      <div class="sw"><div class="chip" style="background:#fff"></div><div class="nm">White</div><div class="hex">#FFFFFF</div></div>
+    </div>
+    <div class="foot"><span>Color Palette</span><span>06</span></div>
+  </section>
+
+  <!-- 07 Color Pairings -->
+  <section class="slide green">
+    <div class="eyebrow">Color</div>
+    <h2>Accessible pairings</h2>
+    <div class="pair-grid">
+      <div class="pair" style="background:#223a2a;color:#fff;border:1px solid rgba(255,255,255,.14)"><div class="big">Compassion</div><div class="sm" style="color:rgba(255,255,255,.85)">White text on deep green</div><div class="tag" style="color:var(--terracotta-lt)">Primary, high contrast</div></div>
+      <div class="pair" style="background:#f4ebe1;color:#17281e"><div class="big">Compassion</div><div class="sm" style="color:#4a5a4f">Forest text on cream</div><div class="tag" style="color:#c46530">Body pages</div></div>
+      <div class="pair" style="background:#c46530;color:#fff"><div class="big">Compassion</div><div class="sm" style="color:rgba(255,255,255,.9)">White text on terracotta</div><div class="tag" style="color:#fff">Calls to action only</div></div>
+      <div class="pair" style="background:#94a276;color:#17281e"><div class="big">Compassion</div><div class="sm" style="color:#1d2b22">Forest text on sage</div><div class="tag" style="color:#17281e">Accents, chips</div></div>
+    </div>
+    <div class="foot"><span>Color Pairings</span><span>07</span></div>
+  </section>
+
+  <!-- 08 Typography -->
+  <section class="slide dark">
+    <div class="eyebrow">Typography</div>
+    <h2>Two typefaces, one voice</h2>
+    <div class="type-row">
+      <div class="type-aa">Aa</div>
+      <div><div class="type-name">GT Super Display</div><div class="type-meta">Headlines and display &middot; Medium, Bold</div><div class="type-sample">Care that feels truly personal.</div></div>
+    </div>
+    <div class="type-row">
+      <div class="type-aa sans">Aa</div>
+      <div><div class="type-name" style="font-family:var(--sans);font-weight:800">Plus Jakarta Sans</div><div class="type-meta">Body, labels, interface &middot; Regular to ExtraBold</div><div class="type-sample sans">Compassionate, on-site mental health support for older adults.</div></div>
+    </div>
+    <div class="foot"><span>Typography</span><span>08</span></div>
+  </section>
+
+  <!-- 09 Logo -->
+  <section class="slide green">
+    <div class="eyebrow">Logo</div>
+    <h2>Using the mark</h2>
+    <div class="logo-grid">
+      <div><div class="logo-box light"><img src="../assets/images/logo-green.svg" alt=""></div><div class="cap">Primary, on light backgrounds</div></div>
+      <div><div class="logo-box dark2"><img src="../assets/images/logo-white.svg" alt=""></div><div class="cap">Reverse, on deep green</div></div>
+    </div>
+    <div class="dodont">
+      <div class="do"><h4>Do</h4><li>Keep clear space around the mark</li><li>Use green on light, white on dark</li><li>Scale proportionally</li></div>
+      <div class="dont"><h4>Don't</h4><li>Recolor, stretch, or rotate it</li><li>Add shadows or effects</li><li>Place on busy photos without a scrim</li></div>
+    </div>
+    <div class="foot"><span>Logo Usage</span><span>09</span></div>
+  </section>
+
+  <!-- 10 Iconography -->
+  <section class="slide dark">
+    <div class="eyebrow">Iconography</div>
+    <h2>A friendly, consistent icon set</h2>
+    <div class="icon-grid">
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 10v10h14V10"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+    </div>
+    <div class="icon-note"><b>Style:</b> simple line icons, 1.8 stroke, rounded caps and joins, one color (sage or white on dark, deep green on light). Keep them friendly and uncluttered. Avoid filled, heavily detailed, or novelty icons.</div>
+    <div class="foot"><span>Iconography</span><span>10</span></div>
+  </section>
+
+  <!-- 11 Buttons & UI -->
+  <section class="slide green">
+    <div class="eyebrow">Components</div>
+    <h2>Buttons and UI</h2>
+    <div class="ui-lab">Buttons</div>
+    <div class="btn-demo">
+      <span class="bd bd-primary">Contact Us &nbsp;&rarr;</span>
+      <span class="bd bd-outline">Explore our services</span>
+      <span class="bd bd-light">Learn more</span>
+    </div>
+    <div class="ui-lab">Chips &amp; tags</div>
+    <div class="pill-demo">
+      <span class="pill">Screenings</span><span class="pill">On-site Care</span><span class="pill">Medication Management</span><span class="pill">Family Support</span>
+    </div>
+    <div class="ui-note"><b>Primary (terracotta)</b> for the single most important action. <b>Outline</b> and <b>light</b> for secondary actions, light on dark backgrounds. All controls use fully rounded corners. Keep one primary action per section.</div>
+    <div class="foot"><span>Buttons &amp; UI</span><span>11</span></div>
+  </section>
+
+  <!-- 12 Spacing & Layout -->
+  <section class="slide cream">
+    <div class="eyebrow">Layout</div>
+    <h2>Spacing and balance</h2>
+    <div class="lay-grid">
+      <div class="lay-card"><h3>Let it breathe</h3><p>Generous margins and whitespace keep the brand calm and premium. Never crowd the edges.</p></div>
+      <div class="lay-card"><h3>Center the story</h3><p>Balance content toward the middle of the space, not clustered at the top.</p></div>
+      <div class="lay-card"><h3>One idea per section</h3><p>Give each message room. Clear hierarchy over dense pages.</p></div>
+      <div class="lay-card"><h3>Consistent rhythm</h3><p>Reuse the same spacing steps so pages feel like one family.</p></div>
+    </div>
+    <div class="scale">
+      <div><span style="height:.2in"></span><small>8</small></div>
+      <div><span style="height:.35in"></span><small>16</small></div>
+      <div><span style="height:.55in"></span><small>24</small></div>
+      <div><span style="height:.8in"></span><small>40</small></div>
+      <div><span style="height:1.1in"></span><small>64</small></div>
+    </div>
+    <div class="foot"><span>Spacing &amp; Layout</span><span>12</span></div>
+  </section>
+
+  <!-- 13 Imagery -->
+  <section class="slide dark">
+    <div class="eyebrow">Imagery</div>
+    <h2>How we show care</h2>
+    <div class="img-strip">
+      <div class="ph" style="background-image:url('../assets/images/photos/home-hero.jpg')"></div>
+      <div class="ph" style="background-image:url('../assets/images/photos/onsite-care.jpg')"></div>
+      <div class="ph" style="background-image:url('../assets/images/photos/screenings.jpg')"></div>
+    </div>
+    <div class="principles">
+      <p><b>Use:</b> real, warm moments of older adults with caregivers and clinicians, natural light, genuine expressions, on-site settings.</p>
+      <p><b>Avoid:</b> masks, staged or clinical stock, and gloomy tones. Add a soft deep-green scrim when text sits over a photo.</p>
+    </div>
+    <div class="foot"><span>Imagery</span><span>13</span></div>
+  </section>
+
+  <!-- 14 Brand in Use -->
+  <section class="slide cream">
+    <div class="eyebrow">Applications</div>
+    <h2>The brand in use</h2>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="use-top card-mock">
+          <img src="../assets/images/logo-green.svg" alt="">
+          <div class="nm">Your Name</div>
+          <div class="ti">Nurse Practitioner</div>
+          <div class="ct">864-970-2273 &middot; clinical@itrustcares.com</div>
+        </div>
+        <div class="use-cap">Business card</div>
+      </div>
+      <div class="use-card">
+        <div class="use-top social-mock"><div class="sc"></div><div class="st">Mental health care for senior living.</div></div>
+        <div class="use-cap">Social post</div>
+      </div>
+      <div class="use-card">
+        <div class="use-top sig-mock" style="background:#fff;justify-content:center">
+          <img src="../assets/images/logo-green.svg" alt="">
+          <div class="nm">Your Name</div>
+          <div class="ln">Nurse Practitioner, iTrust Cares</div>
+          <div class="ln tc">864-970-2273</div>
+          <div class="ln">clinical@itrustcares.com</div>
+        </div>
+        <div class="use-cap">Email signature</div>
+      </div>
+    </div>
+    <div class="foot"><span>Brand in Use</span><span>14</span></div>
+  </section>
+
+  <!-- 15 Contact -->
+  <section class="slide green">
+    <div class="eyebrow">Contact</div>
+    <h2>How to reach us</h2>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Upstate South Carolina</h3>
+        <div class="line"><span class="k">Phone</span> &nbsp; <span class="v">864-970-2273</span></div>
+        <div class="line"><span class="k">Fax</span> &nbsp; <span class="v">864-383-6258</span></div>
+      </div>
+      <div class="contact-block">
+        <h3>Lowcountry South Carolina</h3>
+        <div class="line"><span class="k">Phone</span> &nbsp; <span class="v">843-285-6757</span></div>
+      </div>
+      <div class="contact-block">
+        <h3>Email &amp; Web</h3>
+        <div class="line"><span class="k">Email</span> &nbsp; <span class="tc">clinical@itrustcares.com</span></div>
+        <div class="line"><span class="k">Website</span> &nbsp; <span class="tc">itrustcares.com</span></div>
+      </div>
+      <div class="contact-block">
+        <h3>Where We Serve</h3>
+        <div class="line"><span class="v">Senior living communities across the Upstate and Lowcountry of South Carolina.</span></div>
+      </div>
+    </div>
+    <p class="contact-close">Thank you for helping us bring compassionate care to senior living.</p>
+    <div class="foot"><span>Contact</span><span>15</span></div>
+  </section>
+
+</body>
+</html>
