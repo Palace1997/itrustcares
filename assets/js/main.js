@@ -119,8 +119,19 @@
       }
       var action = form.getAttribute("action") || "";
       if (action.indexOf("YOUR_") !== -1) {
-        show("This form isn't connected yet — add your Formspree form ID to enable submissions.", false);
+        show("This form isn't connected yet. Add your Formspree form ID to enable submissions.", false);
         return;
+      }
+      // Tag the email subject with the selected category so submissions are easy to sort.
+      var subjEl = form.querySelector('input[name="_subject"]');
+      if (subjEl) {
+        var reasonEl = form.querySelector('[name="reason"]');
+        var typeEl = form.querySelector('[name="partnership_type"]');
+        if (reasonEl && reasonEl.value) {
+          subjEl.value = "New iTrust Cares message: " + reasonEl.value;
+        } else if (typeEl && typeEl.value) {
+          subjEl.value = "New partnership inquiry: " + typeEl.value;
+        }
       }
       var original = btn ? btn.textContent : "";
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
