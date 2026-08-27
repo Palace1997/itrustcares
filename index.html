@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" href="assets/images/logo-mark.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/styles.css?v=23">
+<link rel="stylesheet" href="assets/css/styles.css?v=24">
 <style>
   /* Homepage hero: immersive full-screen background (Mockup B) */
   .hero { min-height: 86vh; display: flex; align-items: center; }
@@ -289,11 +289,21 @@
         <p class="lead">Hear directly from our owner and founder about the heart behind iTrust Cares and the families we care for.</p>
       </div>
       <div class="video-embed a-zoom" data-anim>
-        <video controls preload="none" playsinline poster="assets/ceo-poster.jpg" width="1920" height="1080" aria-label="A message from our owner and founder">
+        <video id="ceo-video" controls playsinline preload="none" width="1920" height="1080" aria-label="A message from our owner and founder">
           <source src="assets/ceo-message.mp4" type="video/mp4">
           Your browser does not support the video tag. <a href="assets/ceo-message.mp4">Download the video</a>.
         </video>
+        <button type="button" class="video-cover" id="ceo-cover" aria-label="Play the message from our owner and founder">
+          <img src="assets/ceo-poster.jpg" alt="Steven Krozer, Owner and Founder of iTrust Cares" width="1280" height="720">
+          <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
       </div>
+      <script>
+        (function () {
+          var cover = document.getElementById('ceo-cover'), vid = document.getElementById('ceo-video');
+          if (cover && vid) { cover.addEventListener('click', function () { cover.style.display = 'none'; if (vid.play) { vid.play(); } }); }
+        })();
+      </script>
     </div>
   </section>
 
