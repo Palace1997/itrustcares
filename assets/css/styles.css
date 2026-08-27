@@ -199,6 +199,7 @@ p { margin: 0 0 1.1rem; }
 .nav__toggle[aria-expanded="true"] .icon-open { display: none; }
 .nav__toggle[aria-expanded="true"] .icon-close { display: block; }
 
+.nav__cta { white-space: nowrap; gap: 0.28em; }
 @media (max-width: 1000px) {
   .nav__toggle { display: inline-flex; align-items: center; justify-content: center; }
   .nav__phone { display: none; }
@@ -206,9 +207,17 @@ p { margin: 0 0 1.1rem; }
   .nav-bar.open { display: block; }
   .nav-bar .nav__links { flex-direction: column; align-items: stretch; gap: 0.15rem; padding: 0.75rem 0 1.25rem; }
   .nav-bar .nav__links a { padding: 0.9rem 0.5rem; font-size: 1.1rem; }
+  /* Mobile header layout: hamburger first, then smaller logo, Contact pushed right */
+  .nav-top__actions { display: contents; }
+  .nav-top__inner { gap: 0.6rem; }
+  .nav__toggle { order: 1; }
+  .nav__logo { order: 2; }
+  .nav__logo img { height: 42px; }
+  .nav__cta { order: 3; margin-left: auto; padding: 0.6rem 1.15rem; font-size: 0.9rem; }
 }
 @media (max-width: 420px) {
-  .nav-top__actions { gap: 0.5rem; }
+  .nav-top__inner { gap: 0.4rem; }
+  .nav__logo img { height: 38px; }
 }
 
 /* ---------- Hero (background photo) ---------- */
@@ -672,6 +681,15 @@ body.modal-open { overflow: hidden; }
 .site-footer a { color: rgba(244,235,225,0.85); text-decoration: none; }
 .site-footer a:hover { color: var(--white); text-decoration: underline; }
 .footer-about p { font-size: 0.96rem; max-width: 34ch; }
+.footer-social { display: flex; gap: 0.6rem; margin-top: 1.4rem; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(244,235,225,0.1); color: rgba(244,235,225,0.85);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.footer-social a:hover { background: var(--terracotta); color: #fff; transform: translateY(-2px); text-decoration: none; }
+.footer-social svg { width: 20px; height: 20px; }
 .footer-bottom {
   margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(244,235,225,0.16);
   display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;
